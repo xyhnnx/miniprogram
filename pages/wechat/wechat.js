@@ -1,13 +1,15 @@
 //index.js
 //获取应用实例
-var app = getApp()
+import request from '../../utils/request'
+const regeneratorRuntime = require('../../utils/runtime')
+let app = getApp()
 Page({
   data: {
-    newsList: [],
+    examList: [],
     startX: 0
   },
   // 事件绑定
-  gotoLink: function() {
+  gotoLink: function () {
     wx.showToast({
       title: '不支持外链！',
       icon: 'loading',
@@ -22,42 +24,50 @@ Page({
     })
   },
   end: function (event) {
-    var endX = event.changedTouches[0].pageX
-    var dis = endX - this.data.startX
-    if( dis > 100){
-        // wx.switchTab({
-        //   url: ''
-        // })
-    } 
+    let endX = event.changedTouches[0].pageX
+    let dis = endX - this.data.startX
+    if (dis > 100) {
+      // wx.switchTab({
+      //   url: ''
+      // })
+    }
     console.log(dis)
-    if(-dis > 100) {
+    if (-dis > 100) {
       wx.switchTab({
-          url: '../video/video'
-        })
+        url: '../video/video'
+      })
     }
   },
   // 下拉刷新
-  onPullDownRefresh: function(){
-    wx.stopPullDownRefresh()
+  onPullDownRefresh () {
+    this.getData()
   },
-  // 页面加载
-  onLoad: function () {
-    var that = this
-    wx.request({
-      url: 'https://api.tianapi.com/wxnew/?key=f777ea16a2472e775d895d7adeba9c24&num=50',
-      method: 'GET',
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function(res) {
-        that.setData({
-          newsList: res.data.newslist
-        })
-      }
+  async getData () {
+    let that = this
+    let params = {
+      areaCode: '44,09',
+      gradeType: 12,
+      gradeYear: 2019,
+      examType: 10,
+      graduateStatus: 0,
+      pageNo: 1,
+      pageSize: 20
+    }
+    let res = await request({
+      data: params,
+      url: 'api/exam/plan/area'
+    })
+    that.setData({
+      examList: res.data.exam
     })
   },
+  // 页面加载
+  onLoad () {
+    console.log('onload')
+    this.getData()
+  },
   // 页面分享
-  onShareAppMessage: function () {
+  onShareAppMessage () {
     return {
       title: '微信小程序',
       desc: '这是微信小程序的分享功能',
