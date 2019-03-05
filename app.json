@@ -1,0 +1,51 @@
+{
+  "pages":[
+    "pages/wechat/wechat",
+    "pages/index/index",
+    "pages/map/map",
+    "pages/canvas/canvas",
+    "pages/video/video"
+  ],
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#09bb07",
+    "borderStyle": "black",
+    "list": [
+    {
+      "pagePath": "pages/wechat/wechat",
+      "text": "微信",
+      "iconPath": "images/2.png",
+      "selectedIconPath": "images/2-1.png"
+    },
+    {
+      "pagePath": "pages/video/video",
+      "text": "视频",
+      "iconPath": "images/3.png",
+      "selectedIconPath": "images/3-1.png"
+    },
+    {
+      "pagePath": "pages/canvas/canvas",
+      "text": "涂鸦",
+      "iconPath": "images/4.png",
+      "selectedIconPath": "images/4-1.png"
+    },
+    {
+      "pagePath": "pages/map/map",
+      "text": "地图",
+      "iconPath": "images/5.png",
+      "selectedIconPath": "images/5-1.png"
+    }]
+  },
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#f79d00",
+    "navigationBarTitleText": "科技头条",
+    "navigationBarTextStyle":"white",
+    "enablePullDownRefresh": true
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  }
+}
