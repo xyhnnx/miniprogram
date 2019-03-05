@@ -9,7 +9,7 @@ Page({
   },
   // 获取视频
   bindButtonTap: function() {
-        var that = this
+        let that = this
         wx.chooseVideo({
             sourceType: ['album','camera'],
             maxDuration: 60,
@@ -29,13 +29,13 @@ Page({
     })
   },
   end: function (event) {
-    var endX = event.changedTouches[0].pageX
-    var dis = endX - this.data.startX
+    let endX = event.changedTouches[0].pageX
+    let dis = endX - this.data.startX
     if( dis > 100){
         wx.switchTab({
           url: '../wechat/wechat'
         })
-    } 
+    }
     if(-dis > 100) {
       wx.switchTab({
           url: '../canvas/canvas'

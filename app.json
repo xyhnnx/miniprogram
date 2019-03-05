@@ -13,7 +13,7 @@
     "list": [
     {
       "pagePath": "pages/wechat/wechat",
-      "text": "微信",
+      "text": "测试",
       "iconPath": "images/2.png",
       "selectedIconPath": "images/2-1.png"
     },

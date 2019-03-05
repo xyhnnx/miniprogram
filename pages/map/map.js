@@ -11,8 +11,8 @@ Page({
     })
   },
   end: function (event) {
-    var endX = event.changedTouches[0].pageX
-    var dis = this.data.startX - endX
+    let endX = event.changedTouches[0].pageX
+    let dis = this.data.startX - endX
     if(dis > 100){
         wx.switchTab({
           url: '../canvas/canvas'
@@ -25,7 +25,7 @@ Page({
   },
   // 页面加载
   onLoad: function () {
-    var that = this
+    let that = this
     wx.getLocation({
       type: 'gcj02',
       success: function(res) {
