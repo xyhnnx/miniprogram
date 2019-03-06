@@ -1,6 +1,6 @@
 //index.js
 //获取应用实例
-import request from '../../utils/request'
+// import request from '../../utils/request'
 const regeneratorRuntime = require('../../utils/runtime')
 let app = getApp()
 Page({
@@ -38,6 +38,12 @@ Page({
       })
     }
   },
+  toDetail (e) {
+    let examId = e.currentTarget.dataset.examId
+    wx.navigateTo({
+      url: '/pages/detail/detail?examId=' + examId
+    })
+  },
   // 下拉刷新
   onPullDownRefresh () {
     this.getData()
@@ -53,7 +59,7 @@ Page({
       pageNo: 1,
       pageSize: 20
     }
-    let res = await request({
+    let res = await app.globalData.request({
       data: params,
       url: 'api/exam/plan/area'
     })

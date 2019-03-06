@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class="container" bindtouchend="end" bindtouchstart="start">
-  <view bindtap="gotoLink"   wx:for="{{examList}}" wx:key="{{item.examId}}">
+  <view bindtap="toDetail" data-exam-id="{{item.examId}}"   wx:for="{{examList}}" wx:key="{{item.examId}}">
     <view>{{item.examName}}</view>
     <text>{{item.creatorName}}</text>
   </view>
